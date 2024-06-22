@@ -1,0 +1,43 @@
+# ingress
+
+{{- if .Values.ingress.use }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  namespace: {{ .Values.rootNamespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: '3600'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '3600'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '3600'
+    nginx.ingress.kubernetes.io/server-snippets: |
+      location /ws/ {
+        proxy_http_version 1.1;
+        proxy_redirect off;
+        proxy_buffering off;
+      } 
+    {{- if .Values.ingress.certManager }}
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    {{- end }}
+spec:
+  {{- if .Values.ingress.certManager }}
+  tls:
+    - hosts:
+      - {{ .Values.ingress.host }}
+    secretName: frontend-ingress-tls
+  {{- end }}
+  # Update deprecated tls specification to new format
+
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80
+  ingressClassName: nginx
+{{- end }}

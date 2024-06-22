@@ -1,0 +1,16 @@
+# service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: {{ .Values.rootNamespace }}
+  labels:
+    app: frontend-container
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 3000
+  selector:
+    app: frontend-container

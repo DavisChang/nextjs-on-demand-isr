@@ -1,0 +1,9 @@
+rootNamespace: "nextjsfront"
+ingress:
+  use: true
+  certManager: false
+  host: "localhost"
+frontend:
+  imageURL: davischang/with-docker-multi-env-development:latest
+  env:
+    HOSTNAME: "localhost"

@@ -1,0 +1,22 @@
+# deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-container
+  namespace: {{ .Values.rootNamespace }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-container
+  template:
+    metadata:
+      labels:
+        app: frontend-container
+    spec:
+      containers:
+        - name: frontend-container
+          image: {{ .Values.frontend.imageURL }}
+          ports:
+            - containerPort: 3000

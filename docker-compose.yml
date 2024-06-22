@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+  nextjs:
+    image: davischang/with-docker-multi-env-development:latest
+    ports:
+      - "3000:3000" # Map host port 3000 to container port 3000
