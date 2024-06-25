@@ -1,6 +1,18 @@
 {
   "name": "nextjs-on-demand-isr",
-  "version": "0.2.0",
+  "keywords": [
+    "mac",
+    "docker",
+    "kubernetes",
+    "k8s",
+    "helm",
+    "minikube",
+    "ingress",
+    "nextjs",
+    "isr"
+  ],
+  "description": "NextJS On-Demand Incremental Static Regeneration (K8S & Ingress & Minikube)",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",

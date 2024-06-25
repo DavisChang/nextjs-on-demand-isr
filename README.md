@@ -1,4 +1,4 @@
-# NextJS On-Demand Incremental Static Regeneration
+# NextJS On-Demand Incremental Static Regeneration (K8S & Ingress & Minikube)
 
 On-demand ISR in [Next.js](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#revalidating-data)
 
@@ -32,29 +32,42 @@ $ curl -X POST http://localhost:3000/api/webhook -H "Content-Type: application/j
 ## Build Images
 
 ```
-$ docker build -t davischang/with-docker-multi-env-development .
-$ docker image tag davischang/with-docker-multi-env-development davischang/with-docker-multi-env-development:v1.0.1
-$ docker image push  davischang/with-docker-multi-env-development:v1.0.1
+$ docker build -t nextjs-on-demand-isr-nextjs .
+$ docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:v1.0.1
+$ docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:latest
+$ docker image push davischang/nextjs-on-demand-isr-nextjs:latest
+$ docker image push davischang/nextjs-on-demand-isr-nextjs:v1.0.1
 ```
 
-## Use K8S & Minikube
+## Use K8S & Ingress & Minikube
 
 ```
+
+
+# start minikube
 $ minikube start
+
+# install nginx-ingress
+$ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+$ helm repo update
+$ helm install nginx-ingress ingress-nginx/ingress-nginx
+
 $ minikube dashboard --url // dashboard
 $ kubectl create namespace nextjsfront
-# helm install next-js-frontend ./deployment/helm -n nextjsfront
+$ helm install next-js-frontend ./deployment/helm -n nextjsfront
 
-$ kubectl get pods -n nextjsfront
-$ kubectl get service -n nextjsfront
-$ kubectl get deployment -n nextjsfront
-$ kubectl get ingress -n nextjsfront
+$ kubectl get pods,service,deployment,ingress -n nextjsfront
+$ kubectl get endpoints -n nextjsfront
 
 $ minikube tunnel
+$ minikube service frontend-service -n nextjsfront
 
 $ helm upgrade next-js-frontend ./deployment/helm -n nextjsfront // update deployment change
 $ kubectl rollout status deployment/frontend-container -n nextjsfront // verify the deployment's rollout status
 
 $ helm ls --all-namespaces -a
 $ helm uninstall next-js-frontend -n nextjsfront
+
+# stop and delete minikube
+$ minikube stop && minikube delete
 ```
