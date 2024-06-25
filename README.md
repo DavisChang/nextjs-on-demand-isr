@@ -42,12 +42,10 @@ $ docker image push davischang/nextjs-on-demand-isr-nextjs:v1.0.1
 ## Use K8S & Ingress & Minikube
 
 ```
-
-
-# start minikube
+// start minikube
 $ minikube start
 
-# install nginx-ingress
+// install nginx-ingress
 $ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 $ helm repo update
 $ helm install nginx-ingress ingress-nginx/ingress-nginx
@@ -56,18 +54,33 @@ $ minikube dashboard --url // dashboard
 $ kubectl create namespace nextjsfront
 $ helm install next-js-frontend ./deployment/helm -n nextjsfront
 
+// get deployment info
 $ kubectl get pods,service,deployment,ingress -n nextjsfront
 $ kubectl get endpoints -n nextjsfront
+```
 
+## Minikube tunnel
+
+Connect to LoadBalancer services
+
+```
 $ minikube tunnel
 $ minikube service frontend-service -n nextjsfront
+```
 
+## Upgrade a release
+
+```
 $ helm upgrade next-js-frontend ./deployment/helm -n nextjsfront // update deployment change
 $ kubectl rollout status deployment/frontend-container -n nextjsfront // verify the deployment's rollout status
-
 $ helm ls --all-namespaces -a
+```
+
+## Uninstall a release
+
+```
 $ helm uninstall next-js-frontend -n nextjsfront
 
-# stop and delete minikube
+// stop and delete minikube
 $ minikube stop && minikube delete
 ```
