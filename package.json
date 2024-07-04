@@ -9,7 +9,8 @@
     "minikube",
     "ingress",
     "nextjs",
-    "isr"
+    "isr",
+    "SonarQube"
   ],
   "description": "NextJS On-Demand Incremental Static Regeneration (K8S & Ingress & Minikube)",
   "version": "0.3.0",

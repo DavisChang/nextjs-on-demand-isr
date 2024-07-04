@@ -1,4 +1,4 @@
-# NextJS On-Demand Incremental Static Regeneration (K8S & Ingress & Minikube)
+# NextJS On-Demand Incremental Static Regeneration (K8S & Ingress & Minikube) and SonarQube
 
 On-demand ISR in [Next.js](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#revalidating-data)
 
