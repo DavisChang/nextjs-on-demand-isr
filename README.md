@@ -102,3 +102,22 @@ $ minikube stop && minikube delete
 ## ConfigMap
 
 You can add ENV in runtime (server-side)
+
+## Secrets (Opaque)
+
+Not Include confidential data in your application code
+
+```
+$ kubectl get secrets -n nextjsfront
+$ kubectl edit secret env-secret -n nextjsfront
+
+# Find ENV: MY_SECRET_TOKEN: b3BhcXVlLWVudi1zZWNyZXQ=
+$ echo "b3BhcXVlLWVudi1zZWNyZXQ=" | base64 -D
+
+```
+
+## Vault Secrets
+
+```
+
+```

@@ -20,6 +20,12 @@ spec:
           image: {{ .Values.frontend.imageURL }}
           ports:
             - containerPort: 3000
+          env:
+            - name: MY_SECRET_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: MY_SECRET_TOKEN
           volumeMounts:
             - name: env-production-cm
               mountPath: /app/.env.production
