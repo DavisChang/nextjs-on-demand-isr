@@ -33,10 +33,11 @@ $ curl -X POST http://localhost:3000/api/webhook -H "Content-Type: application/j
 
 ```
 $ docker build -t nextjs-on-demand-isr-nextjs .
-$ docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:v1.1.0
-$ docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:latest
-$ docker image push davischang/nextjs-on-demand-isr-nextjs:latest
-$ docker image push davischang/nextjs-on-demand-isr-nextjs:v1.1.0
+$ docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:v1.1.3 && \
+docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:latest
+$ docker image push davischang/nextjs-on-demand-isr-nextjs:latest && \
+docker image push davischang/nextjs-on-demand-isr-nextjs:v1.1.3
+
 ```
 
 ## Use K8S & Ingress & Minikube
@@ -77,6 +78,16 @@ $ helm upgrade next-js-frontend ./deployment/helm -n nextjsfront
 # verify the deployment's rollout status
 $ kubectl rollout status deployment/frontend-container -n nextjsfront
 $ helm ls --all-namespaces -a
+
+```
+
+## Rollback a release
+
+```
+# find release name
+$ helm list -n nextjsfront
+# rollback deployment
+$ helm rollback next-js-frontend -n nextjsfront
 ```
 
 ## Uninstall a release
@@ -87,3 +98,7 @@ $ helm uninstall next-js-frontend -n nextjsfront
 // stop and delete minikube
 $ minikube stop && minikube delete
 ```
+
+## ConfigMap
+
+You can add ENV in runtime (server-side)

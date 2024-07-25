@@ -3,4 +3,4 @@ ingress:
   use: true
   host: "localhost"
 frontend:
-  imageURL: davischang/nextjs-on-demand-isr-nextjs:v1.1.0
+  imageURL: davischang/nextjs-on-demand-isr-nextjs:v1.1.3

@@ -20,3 +20,15 @@ spec:
           image: {{ .Values.frontend.imageURL }}
           ports:
             - containerPort: 3000
+          volumeMounts:
+            - name: env-production-cm
+              mountPath: /app/.env.production
+              readOnly: true
+              subPath: .env.production
+      volumes:
+        - name: env-production-cm
+          configMap:
+            name: env-production-cm
+            items:
+              - key: .env
+                path: .env.production

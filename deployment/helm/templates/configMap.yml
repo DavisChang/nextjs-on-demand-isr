@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-production-cm
+data:
+  .env: |-
+    NODE_ENV=production
+    VERSION=v1.0.1
+    MY_SECRET_TOKEN=k8s_my_secret_token
+    NEXT_PUBLIC_ANALYTICS_ID=k8s_public_analytics_id
