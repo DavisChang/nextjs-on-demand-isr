@@ -33,10 +33,10 @@ $ curl -X POST http://localhost:3000/api/webhook -H "Content-Type: application/j
 
 ```
 $ docker build -t nextjs-on-demand-isr-nextjs .
-$ docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:v1.0.1
+$ docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:v1.1.0
 $ docker image tag nextjs-on-demand-isr-nextjs:latest davischang/nextjs-on-demand-isr-nextjs:latest
 $ docker image push davischang/nextjs-on-demand-isr-nextjs:latest
-$ docker image push davischang/nextjs-on-demand-isr-nextjs:v1.0.1
+$ docker image push davischang/nextjs-on-demand-isr-nextjs:v1.1.0
 ```
 
 ## Use K8S & Ingress & Minikube
@@ -71,8 +71,11 @@ $ minikube service frontend-service -n nextjsfront
 ## Upgrade a release
 
 ```
-$ helm upgrade next-js-frontend ./deployment/helm -n nextjsfront // update deployment change
-$ kubectl rollout status deployment/frontend-container -n nextjsfront // verify the deployment's rollout status
+# update deployment change
+$ helm upgrade next-js-frontend ./deployment/helm -n nextjsfront
+
+# verify the deployment's rollout status
+$ kubectl rollout status deployment/frontend-container -n nextjsfront
 $ helm ls --all-namespaces -a
 ```
 
