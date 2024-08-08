@@ -31,7 +31,12 @@ $ curl -X POST http://localhost:3000/api/webhook -H "Content-Type: application/j
 
 ## Typescript
 
+1. Structure the app in a certain way.
+2. Making things reusable.
+3. Ensure consistency throughout the app.
+
 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
+
 [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)
 
 ## Build Images
