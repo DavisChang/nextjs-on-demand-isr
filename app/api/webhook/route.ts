@@ -1,4 +1,5 @@
 import { revalidatePath } from "next/cache";
+import { getErrorMessage } from "../../../utils/getErrorMessage";
 
 export async function POST(request: Request) {
   try {
@@ -19,11 +20,10 @@ export async function POST(request: Request) {
       revalidatePath(`/${id}`);
     }
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      return new Response(`Webhook error: ${error.message}`, {
-        status: 400,
-      });
-    }
+    const errorMsg = getErrorMessage(error);
+    return new Response(errorMsg, {
+      status: 400,
+    });
   }
 
   return new Response("Success!", {

@@ -32,6 +32,7 @@ $ curl -X POST http://localhost:3000/api/webhook -H "Content-Type: application/j
 ## Typescript
 
 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
+[Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)
 
 ## Build Images
 
