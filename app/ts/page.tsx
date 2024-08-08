@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Button from "../../components/Button";
 import Button2 from "../../components/Button2";
+import ChatInput from "../../components/chatInput/ChatInput";
 export default function Ts() {
   const [count, setCount] = useState(0);
 
@@ -12,6 +13,9 @@ export default function Ts() {
   };
   const icon = <i></i>;
 
+  const handleSend = (message: string) => {
+    console.log("handleSend:", message);
+  };
   return (
     <div>
       TS
@@ -39,6 +43,11 @@ export default function Ts() {
         <h3>Button2</h3>
         <Button2 countValue={1} countHistory={[1, 2, 3]} />
         <Button2 countValue={"A"} countHistory={["A", "B", "C"]} />
+      </div>
+      <hr />
+      <div>
+        <h3>ChatInput | Created by ChatGPT</h3>
+        <ChatInput onSend={handleSend} />
       </div>
     </div>
   );
