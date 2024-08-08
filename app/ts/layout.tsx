@@ -1,6 +1,7 @@
 import styles from "../../styles/Home.module.scss";
 import Link from "next/link";
 import { StarIcon } from "../icons";
+import { ThemeContextProvider } from "../../context/theme-context";
 
 export default function TsLayout({
   children,
@@ -19,7 +20,7 @@ export default function TsLayout({
           / <Link href="/ts">ts</Link>
         </div>
       </div>
-      {children}
+      <ThemeContextProvider>{children}</ThemeContextProvider>
     </main>
   );
 }

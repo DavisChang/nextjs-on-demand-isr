@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { ThemeContext, useThemeContext } from "../context/theme-context";
 
 // Generics
 // We have codified a relationship between these two props (countValue, countHistory)
@@ -11,6 +12,8 @@ export default function Button2<T>({
   countValue,
   countHistory,
 }: ButtonProps<T>) {
+  const { theme, toggleTheme } = useThemeContext();
+  console.log({ theme, toggleTheme });
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/photos")
       .then((response) => response.json())
@@ -24,5 +27,14 @@ export default function Button2<T>({
       });
   });
 
-  return <button>button2</button>;
+  return (
+    <div>
+      <h4>{theme}</h4>
+      <button onClick={() => toggleTheme()}>toggle theme</button>
+      <button>button2</button>
+      <div>
+        <p>{`countValue: ${countValue}, type: ${typeof countValue}`}</p>
+      </div>
+    </div>
+  );
 }

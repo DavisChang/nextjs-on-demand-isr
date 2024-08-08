@@ -38,7 +38,7 @@ export default function Ts() {
       <div>
         <h3>Button2</h3>
         <Button2 countValue={1} countHistory={[1, 2, 3]} />
-        <Button2 countValue={"1"} countHistory={["1", "2", "3"]} />
+        <Button2 countValue={"A"} countHistory={["A", "B", "C"]} />
       </div>
     </div>
   );
