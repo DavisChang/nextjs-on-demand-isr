@@ -1,7 +1,7 @@
 import styles from "../../styles/Home.module.scss";
 import Link from "next/link";
 import { StarIcon } from "../icons";
-import { ThemeContextProvider } from "../../context/theme-context";
+import { ThemeContextProvider } from "../../contexts/theme-context";
 
 export default function TsLayout({
   children,

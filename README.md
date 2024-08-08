@@ -1,4 +1,4 @@
-# NextJS On-Demand Incremental Static Regeneration (K8S & Ingress & Minikube) and SonarQube
+# NextJS On-Demand Incremental Static Regeneration (K8S & Ingress & Minikube), SonarQube and React Best Practices
 
 On-demand ISR in [Next.js](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#revalidating-data)
 
@@ -38,6 +38,22 @@ $ curl -X POST http://localhost:3000/api/webhook -H "Content-Type: application/j
 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
 [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)
+
+## React Best Practices
+
+1. Use Typescript !!
+2. Ensure the folder structure is easy to understand and consistent.
+3. Magic, hard-coded values should be extracted and placed into constants. (/lib/constants)
+4. Reusable UI components should be placed in the components folder.
+5. Do not add layout styles to reusable components.
+6. Reusable components should be as simple as possible.
+7. Use React Fragments to replace unnecessary div elements.
+8. Using useMemo, useCallback, and React.memo effectively can help optimize performance.
+9. Use the previous state in the update function when the new state depends on the previous state.
+10. Maintain a single source of truth. Avoid replicating the entire object for other purposes.
+11. Do not use useState to manage filters, variants (e.g., on an eCommerce product detail page), and pagination. Instead, use the URL to manage state.
+12. Use React Hooks library for data fetching. (Caching in Next.js, SWR, ReactQuery)
+13. Continuously improve the project by using components, custom hooks, utilities, and libraries.
 
 ## Build Images
 

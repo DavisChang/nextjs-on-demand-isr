@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { ThemeContext, useThemeContext } from "../context/theme-context";
+import { ThemeContext, useThemeContext } from "../contexts/theme-context";
 
 // Generics
 // We have codified a relationship between these two props (countValue, countHistory)
