@@ -1,7 +1,13 @@
-import '../styles/globals.css';
-
+import { GlobalState } from "@/lib/types";
+import "../styles/globals.css";
+import StoreProvider from "./StoreProvider";
 export const metadata = {
-  title: 'On-Demand Incremental Static Regeneration with Next.js',
+  title: "On-Demand Incremental Static Regeneration with Next.js",
+};
+
+const initialGlobalState: GlobalState = {
+  language: "zh-TW",
+  country: "TW",
 };
 
 export default function RootLayout({
@@ -10,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <StoreProvider global={initialGlobalState}>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </StoreProvider>
   );
 }

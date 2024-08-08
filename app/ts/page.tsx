@@ -18,7 +18,7 @@ export default function Ts() {
   };
   return (
     <div>
-      TS
+      <h2>TS</h2>
       <hr />
       <div>
         <h3>Button</h3>
