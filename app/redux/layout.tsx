@@ -3,11 +3,10 @@ import Link from "next/link";
 import { StarIcon } from "../icons";
 import { ThemeContextProvider } from "../../contexts/theme-context";
 
-export default function TsLayout({
+export default function ReduxLayout({
   children,
 }: {
   children: React.ReactNode;
-  params: { id: string };
 }) {
   return (
     <main className={styles.main}>
