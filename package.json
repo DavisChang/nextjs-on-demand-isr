@@ -11,7 +11,11 @@
     "nextjs",
     "isr",
     "SonarQube",
-    "React Best Practices"
+    "React Best Practices",
+    "redux",
+    "redux-toolkit",
+    "Redux Toolkit Query",
+    "RTK Query"
   ],
   "description": "NextJS On-Demand Incremental Static Regeneration (K8S & Ingress & Minikube)",
   "version": "0.3.0",
