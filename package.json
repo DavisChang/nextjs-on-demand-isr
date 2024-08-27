@@ -24,6 +24,7 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start -H 0.0.0.0",
+    "standalone": "node .next/standalone/server.js",
     "lint": "next lint"
   },
   "dependencies": {
